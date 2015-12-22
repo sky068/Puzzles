@@ -20,6 +20,7 @@ public:
     ~SpriteBlock();
     static SpriteBlock* create(const std::string&file,Rect ret,int fid);
     CC_SYNTHESIZE(int , _fid, Fid);
+    void setShowFid(bool flag);
 };
 
 #endif /* SpriteBlock_hpp */

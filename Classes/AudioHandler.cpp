@@ -7,13 +7,22 @@
 //
 
 #include "AudioHandler.h"
+#include "DataManager.h"
 
 void AudioHandler::playBgMusic(const std::string &file)
 {
+    if(!DataManager::getInstance()->getMusicOn())
+    {
+        return;
+    }
     AudioEngine->playBackgroundMusic(file.c_str());
 }
 
 void AudioHandler::playEffect(const std::string &file)
 {
+    if(!DataManager::getInstance()->getEffectOn())
+    {
+        return;
+    }
     AudioEngine->playEffect(file.c_str());
 }

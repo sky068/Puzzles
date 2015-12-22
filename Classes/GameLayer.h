@@ -13,17 +13,15 @@ class GameLayer : public cocos2d::LayerColor
 public:
     GameLayer();
     ~GameLayer();
-    static cocos2d::Scene* createScene();
+    static cocos2d::Scene* createScene(int row=3,int col=3);
 
     virtual bool init();
     
-    // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     
-    // implement the "static create()" method manually
     CREATE_FUNC(GameLayer);
     
-    void initGrid();
+    void initGrid();    //初始化格子，开始游戏
     
     void checkFinish(float dt);
     
@@ -31,6 +29,9 @@ public:
     
     bool onTouchBegan(cocos2d::Touch *touch,cocos2d::Event *event);
    
+    void setShowFid(bool flag); //是否显示提示
+    
+    void initMenuItems();
 private:
     std::string _curImgFile;
     cocos2d::LayerColor *_bgLayer;
@@ -39,7 +40,7 @@ private:
     float _height;  //方块高度
     float _width;   //方块宽度
     bool _isCanTouch;
-    cocos2d::Sprite *_tipSprite;
+    cocos2d::Sprite *_spriteTip;
     
     CC_SYNTHESIZE(int, _col, ColNum);
     CC_SYNTHESIZE(int, _row, RowNum);
@@ -50,6 +51,8 @@ private:
     int _preMove;  //上次空白格移动的标示
     bool _isBeginGame;
     int _effectKind;
+    
+    Label *_lableTips;
     
 };
 

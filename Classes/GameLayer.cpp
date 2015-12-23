@@ -1,9 +1,9 @@
 #include "GameLayer.h"
 #include "ImagePicker.h"
 #include "AudioHandler.h"
-#include "ui/UIButton.h"
 #include "DataManager.h"
 #include "MainMenu.h"
+#include "GameSetting.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -24,6 +24,7 @@ GameLayer::GameLayer()
 ,_isBeginGame(false)
 ,_effectKind(-1)
 ,_lableTips(nullptr)
+,_showFid(false)
 {
     
 }
@@ -64,30 +65,33 @@ bool GameLayer::init()
     return true;
 }
 
+void GameLayer::onCameraCallback(std::string path)
+{
+    CCLOG("~~~~~writablePaht:%s",FileUtils::getInstance()->getWritablePath().c_str());
+    CCLOG("~~~~~filepath:%s",path.c_str());
+    bool isFileExist = FileUtils::getInstance()->isFileExist(path);
+    if (isFileExist) {
+        CCLOG("~~~~图片文件存在！");
+    }else{
+        CCLOG("~~~~~图片文件不存在！");
+    }
+    _curImgFile = path;
+    for(int i=0; i<_row; i++)
+    {
+        delete [] _matrix[i];
+    }
+    CCLOG("~~~~texture:%s",Director::getInstance()->getTextureCache()->getCachedTextureInfo().c_str());
+    
+    this->initGrid();
+}
+
 void GameLayer::initMenuItems()
 {
     Button *btnSelect = Button::create("btn_camera.png");
     btnSelect->addClickEventListener([=](Ref*)
                                      {
-                                         ImagePicker::getInstance()->callImagePickerWithPhotoAndCamera([=](std::string path)
-                                                                                                       {
-                                                                                                           CCLOG("~~~~~writablePaht:%s",FileUtils::getInstance()->getWritablePath().c_str());
-                                                                                                           CCLOG("~~~~~filepath:%s",path.c_str());
-                                                                                                           bool isFileExist = FileUtils::getInstance()->isFileExist(path);
-                                                                                                           if (isFileExist) {
-                                                                                                               CCLOG("~~~~图片文件存在！");
-                                                                                                           }else{
-                                                                                                               CCLOG("~~~~~图片文件不存在！");
-                                                                                                           }
-                                                                                                           _curImgFile = path;
-                                                                                                           for(int i=0; i<_row; i++)
-                                                                                                           {
-                                                                                                               delete [] _matrix[i];
-                                                                                                           }
-                                                                                                           CCLOG("~~~~texture:%s",Director::getInstance()->getTextureCache()->getCachedTextureInfo().c_str());
-                                                                                                           
-                                                                                                           this->initGrid();
-                                                                                                       });
+                                         AudioHandler::playEffect(kEffect_Btn);
+                                         ImagePicker::getInstance()->callImagePickerWithPhotoAndCamera(std::bind(&GameLayer::onCameraCallback, this,std::placeholders::_1));
                                          
                                      });
     btnSelect->setPosition(Vec2(ORIGIN.x+VISIBLE_SIZE.width-btnSelect->getContentSize().width/2*1.5,ORIGIN.y+VISIBLE_SIZE.height-btnSelect->getContentSize().height/2*1.5));
@@ -96,7 +100,10 @@ void GameLayer::initMenuItems()
     Button *btnSet = Button::create("btn_setting.png");
     btnSet -> addClickEventListener([=](Ref*)
                                     {
-                                        
+                                        AudioHandler::playEffect(kEffect_Btn);
+                                        GameSetting *set = GameSetting::create();
+                                        set->setGameLayer(this);
+                                        Director::getInstance()->getRunningScene()->addChild(set);
                                     });
     btnSet->setPosition(Vec2(ORIGIN.x+btnSet->getContentSize().width/2,ORIGIN.y+VISIBLE_SIZE.height-btnSet->getContentSize().height/2*1.5));
     this->addChild(btnSet);
@@ -104,6 +111,8 @@ void GameLayer::initMenuItems()
     Button *btnBack = Button::create("btn_back.png");
     btnBack -> addClickEventListener([=](Ref*)
                                     {
+                                        AudioHandler::playEffect(kEffect_Btn);
+
                                         Scene *scene = MainMenu::createMainMenuScene();
                                         Director::getInstance()->replaceScene(TransitionMoveInL::create(0.5, scene));
                                     });
@@ -244,10 +253,16 @@ void GameLayer::initGrid()
         _spriteTip->removeFromParent();
         _spriteTip = nullptr;
     }
+    
+    /*-----------------显示完整图片---------------*/
     _spriteTip = Sprite::create(_curImgFile);
     this->addChild(_spriteTip);
     _spriteTip->setAnchorPoint(Vec2(0.5,1));
-    _spriteTip->setPosition(ORIGIN.x+VISIBLE_SIZE.width/2,ORIGIN.y+VISIBLE_SIZE.height-5);
+    _spriteTip->setPosition(ORIGIN.x+VISIBLE_SIZE.width/2,ORIGIN.y+VISIBLE_SIZE.height-2);
+//    _spriteTip->setScale(_height / _spriteTip->getContentSize().height * _scale);
+    _spriteTip->setScale(((VISIBLE_SIZE.height-VISIBLE_SIZE.width) / 2 + 15) / _spriteTip->getContentSize().height);
+
+    /*------------------------------------------*/
     
     int min = MIN(_spriteTip->getContentSize().width, _spriteTip->getContentSize().height);
     _scale = VISIBLE_SIZE.width / min;
@@ -255,7 +270,6 @@ void GameLayer::initGrid()
     _width = (float)(min-_col-1) / _col;
     _height = (float)(min-_row-1) / _row;
     
-    _spriteTip->setScale(_height/_spriteTip->getContentSize().height);
     /*-----------------------------------------*/
     
     /*-----------初始化容器---------*/
@@ -440,6 +454,33 @@ void GameLayer::randomPos()
         default:
             break;
     }
+}
+
+void GameLayer::setShowFid(bool flag)
+{
+    for (int row = 0; row<_row; row++)
+    {
+        for (int col = 0; col<_col; col++)
+        {
+            SpriteBlock *b = _matrix[row][col];
+            if (b) {
+                b->setShowFid(flag);
+            }
+        }
+    }
+}
+
+void GameLayer::onEnter()
+{
+    LayerColor::onEnter();
+    AudioHandler::playBgMusic(kMusic_Bg);
+    
+}
+
+void GameLayer::onExit()
+{
+    LayerColor::onExit();
+    AudioHandler::stopBgMusic();
 }
 
 void GameLayer::menuCloseCallback(Ref* pSender)

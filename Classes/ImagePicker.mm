@@ -151,6 +151,7 @@ bool ImagePicker::init()
     MenuItemFont::setFontSize(15);
     MenuItemFont *btnPhoto = MenuItemFont::create("相册", [=](Ref*p)
                                                   {
+                                                      
                                                       openPhoto();
                                                       m_layer->removeFromParent();
                                                   });
@@ -167,7 +168,7 @@ bool ImagePicker::init()
                                                    {
                                                        MoveBy *mby = MoveBy::create(0.5, Vec2(0,csize.height+10));
                                                        bg->runAction(Sequence::create(EaseSineOut::create(mby),     CallFunc::create([m_layer](){                                                       m_layer->removeFromParentAndCleanup(true);
-                                                        }), nil));
+                                                        }), NULL));
                                                    });
     btnCancle->setPosition(Vec2(csize.width/2,csize.height/2-20));
     

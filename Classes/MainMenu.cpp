@@ -9,6 +9,7 @@
 #include "MainMenu.h"
 #include "ui/UIButton.h"
 #include "GameLayer.h"
+#include "AudioHandler.h"
 using namespace ui;
 
 bool MainMenu::init()
@@ -29,6 +30,7 @@ void MainMenu::initMenuItems()
     
     Button *btnErtong = Button::create("btn_ertong.png");
     btnErtong->addClickEventListener([=](Ref*){
+        AudioHandler::playEffect(kEffect_Btn);
         Scene *scene = GameLayer::createScene(3,3);
         Director::getInstance()->replaceScene(TransitionMoveInR::create(0.5, scene));
     });
@@ -36,6 +38,7 @@ void MainMenu::initMenuItems()
    
     Button *btnChaoqun = Button::create("btn_chaoqun.png");
     btnChaoqun->addClickEventListener([=](Ref*){
+        AudioHandler::playEffect(kEffect_Btn);
         Scene *scene = GameLayer::createScene(4,4);
         Director::getInstance()->replaceScene(TransitionMoveInR::create(0.5, scene));
     });
@@ -43,6 +46,7 @@ void MainMenu::initMenuItems()
     
     Button *btnDashi = Button::create("btn_dashi.png");
     btnDashi->addClickEventListener([=](Ref*){
+        AudioHandler::playEffect(kEffect_Btn);
         Scene *scene = GameLayer::createScene(5,5);
         Director::getInstance()->replaceScene(TransitionMoveInR::create(0.5, scene));
     });

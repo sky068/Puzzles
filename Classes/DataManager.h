@@ -27,6 +27,7 @@ public:
     void readData();
     bool getMusicOn();
     bool getEffectOn();
+    void setMusicOn(bool flag);
     
 private:
     void initData();

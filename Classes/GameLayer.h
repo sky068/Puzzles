@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "SpriteBlock.h"
+#include "ui/UIButton.h"
 
 #define VISIBLE_SIZE Director::getInstance()->getVisibleSize()
 #define ORIGIN Director::getInstance()->getVisibleOrigin()
@@ -32,6 +33,14 @@ public:
     void setShowFid(bool flag); //是否显示提示
     
     void initMenuItems();
+    
+    void onCameraCallback(std::string path);
+    
+    void onEnter();
+
+    void onExit();
+    
+    CC_SYNTHESIZE(bool, _showFid, IsShowFid);
 private:
     std::string _curImgFile;
     cocos2d::LayerColor *_bgLayer;

@@ -38,6 +38,11 @@ void DataManager::readData()
     }
 }
 
+void DataManager::setMusicOn(bool flag)
+{
+    _dataMap[kMusicFlag] = Value(flag);
+}
+
 bool DataManager::getMusicOn()
 {
     return _dataMap[kMusicFlag].asBool();

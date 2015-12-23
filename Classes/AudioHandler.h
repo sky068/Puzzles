@@ -21,6 +21,7 @@ using namespace CocosDenshion;
 #define kEffect_Touch "sounds/touch.mp3"
 #define kEffect_Touch2 "sounds/touch2.mp3"
 #define kEffect_Success "sounds/success.mp3"
+#define kEffect_Btn "sounds/click.mp3"
 
 
 class AudioHandler
@@ -28,6 +29,7 @@ class AudioHandler
 public:
     static void playBgMusic(const std::string &file);
     static void playEffect(const std::string &file);
+    static void stopBgMusic();
 };
 
 #endif /* AudioHandler_hpp */

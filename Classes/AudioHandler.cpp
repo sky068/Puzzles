@@ -15,7 +15,7 @@ void AudioHandler::playBgMusic(const std::string &file)
     {
         return;
     }
-    AudioEngine->playBackgroundMusic(file.c_str());
+    AudioEngine->playBackgroundMusic(file.c_str(),true);
 }
 
 void AudioHandler::playEffect(const std::string &file)
@@ -25,4 +25,9 @@ void AudioHandler::playEffect(const std::string &file)
         return;
     }
     AudioEngine->playEffect(file.c_str());
+}
+
+void AudioHandler::stopBgMusic()
+{
+    AudioEngine->stopBackgroundMusic();
 }

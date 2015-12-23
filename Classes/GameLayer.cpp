@@ -118,6 +118,7 @@ void GameLayer::initMenuItems()
                                     });
     btnBack->setPosition(Vec2(ORIGIN.x+btnBack->getContentSize().width/2*1.2,ORIGIN.y+btnBack->getContentSize().height/2*1.2));
     this->addChild(btnBack);
+    
 }
 
 bool GameLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
@@ -134,6 +135,7 @@ bool GameLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             _lableTips->removeFromParentAndCleanup(true);
             _lableTips = nullptr;
         }
+        
         return false;
     }
     
@@ -235,7 +237,6 @@ void GameLayer::initGrid()
     _lableTips->runAction(RepeatForever::create(Sequence::create(ScaleTo::create(0.6, 0.8),ScaleTo::create(0.6, 1.2), NULL)));
     /*----------------------------*/
 
-    
     _effectKind = arc4random() % 2;
     
     if (_bgLayer) {

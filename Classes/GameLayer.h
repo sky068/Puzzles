@@ -42,6 +42,8 @@ public:
     
     CC_SYNTHESIZE(bool, _showFid, IsShowFid);
 private:
+    std::string formateTimeString(long long t);
+private:
     std::string _curImgFile;
     cocos2d::LayerColor *_bgLayer;
     SpriteBlock*** _matrix;
@@ -62,7 +64,7 @@ private:
     int _effectKind;
     
     Label *_lableTips;
-    
+        
 };
 
 #endif // __HELLOWORLD_SCENE_H__

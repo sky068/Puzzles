@@ -17,6 +17,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/SpriteBlock.cpp \
                    ../../Classes/DataManager.cpp \
                    ../../Classes/MainMenu.cpp \
+                   ../../Classes/GameSetting.cpp \
                    ../../Classes/AudioHandler.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

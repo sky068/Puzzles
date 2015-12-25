@@ -234,7 +234,7 @@ void GameLayer::initGrid()
     _bgLayer->setPosition(ORIGIN.x,ORIGIN.y+VISIBLE_SIZE.height/2-VISIBLE_SIZE.width/2-20);
     this->addChild(_bgLayer);
 
-    /*------add tipsprite 并计算宽高缩放系数------*/
+    /*----------add tipsprite ---------*/
     if (_spriteTip)
     {
         _spriteTip->removeFromParent();
@@ -243,15 +243,18 @@ void GameLayer::initGrid()
     
     /*-----------------显示完整图片---------------*/
     _spriteTip = Sprite::create(_curImgFile);
+    float tipH = _spriteTip->getContentSize().height;
+    float tipW = _spriteTip->getContentSize().width;
     this->addChild(_spriteTip);
     _spriteTip->setAnchorPoint(Vec2(0.5,1));
     _spriteTip->setPosition(ORIGIN.x+VISIBLE_SIZE.width/2,ORIGIN.y+VISIBLE_SIZE.height-2);
-//    _spriteTip->setScale(_height / _spriteTip->getContentSize().height * _scale);
-    _spriteTip->setScale(((VISIBLE_SIZE.height-VISIBLE_SIZE.width) / 2 + 15) / _spriteTip->getContentSize().height);
+    float maxWH = tipH>tipW?tipH:tipW;
+    _spriteTip->setScale(((VISIBLE_SIZE.height-VISIBLE_SIZE.width) / 2 + 15) / maxWH);
 
     /*------------------------------------------*/
     
-    int min = MIN(_spriteTip->getContentSize().width, _spriteTip->getContentSize().height);
+    /*------计算宽高缩放系数------*/
+    int min = MIN(tipW, tipH);
     _scale = VISIBLE_SIZE.width / min;
     
     _width = (float)(min-_col-1) / _col;

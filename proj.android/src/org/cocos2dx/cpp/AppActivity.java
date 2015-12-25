@@ -26,10 +26,16 @@ THE SOFTWARE.
 ****************************************************************************/
 package org.cocos2dx.cpp;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 public class AppActivity extends Cocos2dxActivity {
 	
@@ -49,5 +55,41 @@ public class AppActivity extends Cocos2dxActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		ImagePicker.getInstance().onActivityResult(requestCode, resultCode, data);
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)  
+	{
+		if (keyCode == KeyEvent.KEYCODE_BACK) 
+		{
+			exitBy2Click();
+		}
+		return false;
+	}
+	
+	private static boolean isExit = false;
+
+	private void exitBy2Click()
+	{
+		Timer tExit = null;
+		if (isExit == false)
+		{
+			isExit = true;	//准备退出
+			Toast.makeText(this, "2s内再按一次退出程序", Toast.LENGTH_SHORT).show();
+			tExit = new Timer();
+			tExit.schedule(new TimerTask() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					isExit = false;
+				}
+			}, 2000);
+		}
+		else 
+		{
+			finish();
+			System.exit(0);
+		}
 	}
 }

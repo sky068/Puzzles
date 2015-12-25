@@ -26,7 +26,6 @@ SpriteBlock* SpriteBlock::create(const std::string &file, cocos2d::Rect ret, int
         sb->setFid(fid);
         sb->setAnchorPoint(Vec2(0,1));
         sb->autorelease();
-        
         return  sb;
     }
     CC_SAFE_DELETE(sb);
@@ -48,7 +47,4 @@ void SpriteBlock::setShowFid(bool flag)
         this->removeAllChildren();
     }
 }
-
-
-
 

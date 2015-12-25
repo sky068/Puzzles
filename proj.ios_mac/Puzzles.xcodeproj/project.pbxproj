@@ -24,6 +24,7 @@
 		5087E78B17EB975400C73F5D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087E78A17EB975400C73F5D /* OpenGL.framework */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		BA29560B1C2D89D700DAE5FB /* ImagePicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA29560A1C2D89D700DAE5FB /* ImagePicker.mm */; };
 		BA2A69051C27EAD900C398CE /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = BA2A69031C27EAD900C398CE /* sounds */; };
 		BA2A69091C27EB1700C398CE /* AudioHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA2A69061C27EB1700C398CE /* AudioHandler.cpp */; };
 		BA3B51F11C2D1E9900625323 /* demo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BAA7976C1C2148C70002F683 /* demo.jpg */; };
@@ -60,7 +61,6 @@
 		BA3B52111C2D1E9900625323 /* GameSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADABA521C2A5BE10085910B /* GameSetting.cpp */; };
 		BA3B52121C2D1E9900625323 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		BA3B52131C2D1E9900625323 /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADABA2D1C291C810085910B /* DataManager.cpp */; };
-		BA3B52141C2D1E9900625323 /* ImagePicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA3D13BE1C17FE35008B8F64 /* ImagePicker.mm */; };
 		BA3B52151C2D1E9900625323 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* GameLayer.cpp */; };
 		BA3B52161C2D1E9900625323 /* SpriteBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA3D13B41C16C599008B8F64 /* SpriteBlock.cpp */; };
 		BA3B52171C2D1E9900625323 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
@@ -83,7 +83,6 @@
 		BA3B52291C2D1E9900625323 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		BA3B522A1C2D1E9900625323 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		BA3D13B71C16C599008B8F64 /* SpriteBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA3D13B41C16C599008B8F64 /* SpriteBlock.cpp */; };
-		BA3D13C11C17FE35008B8F64 /* ImagePicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA3D13BE1C17FE35008B8F64 /* ImagePicker.mm */; };
 		BA3D13C41C180199008B8F64 /* ImagePickerViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA3D13C21C180199008B8F64 /* ImagePickerViewController.mm */; };
 		BAA7976E1C2148C70002F683 /* demo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BAA7976C1C2148C70002F683 /* demo.jpg */; };
 		BADABA2A1C27F9E20085910B /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = BADABA281C27F9E20085910B /* menu.png */; };
@@ -180,6 +179,7 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BA29560A1C2D89D700DAE5FB /* ImagePicker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImagePicker.mm; sourceTree = "<group>"; };
 		BA2A69031C27EAD900C398CE /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		BA2A69061C27EB1700C398CE /* AudioHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioHandler.cpp; sourceTree = "<group>"; };
 		BA2A69071C27EB1700C398CE /* AudioHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioHandler.h; sourceTree = "<group>"; };
@@ -187,7 +187,6 @@
 		BA3B522F1C2D1E9A00625323 /* Puzzles-mobile copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Puzzles-mobile copy-Info.plist"; path = "/Users/xujw/xujwWork/proj3.9/Puzzles/proj.ios_mac/Puzzles-mobile copy-Info.plist"; sourceTree = "<absolute>"; };
 		BA3D13B41C16C599008B8F64 /* SpriteBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBlock.cpp; sourceTree = "<group>"; };
 		BA3D13B51C16C599008B8F64 /* SpriteBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBlock.h; sourceTree = "<group>"; };
-		BA3D13BE1C17FE35008B8F64 /* ImagePicker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImagePicker.mm; sourceTree = "<group>"; };
 		BA3D13BF1C17FE35008B8F64 /* ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePicker.h; sourceTree = "<group>"; };
 		BA3D13C21C180199008B8F64 /* ImagePickerViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImagePickerViewController.mm; sourceTree = "<group>"; };
 		BA3D13C51C1801B8008B8F64 /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
@@ -365,8 +364,8 @@
 				46880B8719C43A87006E1F66 /* GameLayer.h */,
 				BA3D13B41C16C599008B8F64 /* SpriteBlock.cpp */,
 				BA3D13B51C16C599008B8F64 /* SpriteBlock.h */,
-				BA3D13BE1C17FE35008B8F64 /* ImagePicker.mm */,
 				BA3D13BF1C17FE35008B8F64 /* ImagePicker.h */,
+				BA29560A1C2D89D700DAE5FB /* ImagePicker.mm */,
 				BA3D13C21C180199008B8F64 /* ImagePickerViewController.mm */,
 				BA3D13C51C1801B8008B8F64 /* ImagePickerViewController.h */,
 				BA2A69061C27EB1700C398CE /* AudioHandler.cpp */,
@@ -595,7 +594,6 @@
 				BADABA351C292F650085910B /* MainMenu.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				BA2A69091C27EB1700C398CE /* AudioHandler.cpp in Sources */,
-				BA3D13C11C17FE35008B8F64 /* ImagePicker.mm in Sources */,
 				BA3D13B71C16C599008B8F64 /* SpriteBlock.cpp in Sources */,
 				BADABA551C2A5BE10085910B /* GameSetting.cpp in Sources */,
 				BADABA301C291C810085910B /* DataManager.cpp in Sources */,
@@ -611,12 +609,12 @@
 				BA3B52111C2D1E9900625323 /* GameSetting.cpp in Sources */,
 				BA3B52121C2D1E9900625323 /* AppDelegate.cpp in Sources */,
 				BA3B52131C2D1E9900625323 /* DataManager.cpp in Sources */,
-				BA3B52141C2D1E9900625323 /* ImagePicker.mm in Sources */,
 				BA3B52151C2D1E9900625323 /* GameLayer.cpp in Sources */,
 				BA3B52161C2D1E9900625323 /* SpriteBlock.cpp in Sources */,
 				BA3B52171C2D1E9900625323 /* AppController.mm in Sources */,
 				BA3B52181C2D1E9900625323 /* AudioHandler.cpp in Sources */,
 				BA3B52191C2D1E9900625323 /* MainMenu.cpp in Sources */,
+				BA29560B1C2D89D700DAE5FB /* ImagePicker.mm in Sources */,
 				BA3B521A1C2D1E9900625323 /* RootViewController.mm in Sources */,
 				BA3B521B1C2D1E9900625323 /* ImagePickerViewController.mm in Sources */,
 				BA3B521C1C2D1E9900625323 /* main.m in Sources */,

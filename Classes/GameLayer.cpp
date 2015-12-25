@@ -22,9 +22,7 @@ GameLayer::GameLayer()
 ,_nullRow(-1)
 ,_preMove(-1)
 ,_isBeginGame(false)
-,_effectKind(-1)
 ,_lableTips(nullptr)
-,_showFid(false)
 {
     
 }
@@ -146,17 +144,7 @@ bool GameLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             SpriteBlock *spb = _matrix[row][col];
             if (spb && spb->getBoundingBox().containsPoint(_bgLayer->convertToNodeSpace(touch->getLocation())))
             {
-                switch (_effectKind)
-                {
-                    case 0:
-                        AudioHandler::playEffect(kEffect_Touch);
-                        break;
-                    case 1:
-                        AudioHandler::playEffect(kEffect_Touch2);
-                        break;
-                    default:
-                        break;
-                }
+                AudioHandler::playEffect(kEffect_Touch);
                 
                 //检测上下左右是否有空的
                 int tmpRow = row;
@@ -234,10 +222,8 @@ void GameLayer::initGrid()
     _lableTips->setColor(Color3B::YELLOW);
     this->addChild(_lableTips,__INT_MAX__);
     _lableTips->setPosition(ORIGIN.x+VISIBLE_SIZE.width/2,ORIGIN.y+VISIBLE_SIZE.height/2);
-    _lableTips->runAction(RepeatForever::create(Sequence::create(ScaleTo::create(0.6, 0.8),ScaleTo::create(0.6, 1.2), NULL)));
+    _lableTips->runAction(RepeatForever::create(Sequence::create(ScaleTo::create(0.6, 0.8),ScaleTo::create(0.6, 1.2),DelayTime::create(0.5), NULL)));
     /*----------------------------*/
-
-    _effectKind = arc4random() % 2;
     
     if (_bgLayer) {
         _bgLayer->removeFromParent();
@@ -313,6 +299,10 @@ void GameLayer::initGrid()
             _bgLayer->addChild(spb);
             _matrix[row][col] = spb;
             fid ++;
+            if (DataManager::getInstance()->getShowFid())
+            {
+                spb->setShowFid(true);
+            }
         }
     }
 }
@@ -474,7 +464,14 @@ void GameLayer::setShowFid(bool flag)
 void GameLayer::onEnter()
 {
     LayerColor::onEnter();
-    AudioHandler::playBgMusic(kMusic_Bg);
+    if ((arc4random() % 2) > 0 )
+    {
+        AudioHandler::playBgMusic(kMusic_Bg);
+    }
+    else
+    {
+        AudioHandler::playBgMusic(kMusic_Bg2);
+    }
     
 }
 

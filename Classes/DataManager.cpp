@@ -42,10 +42,19 @@ void DataManager::setMusicOn(bool flag)
 {
     _dataMap[kMusicFlag] = Value(flag);
 }
+void DataManager::setShowFid(bool flag)
+{
+    _dataMap[kShowFidFlag] = Value(flag);
+}
 
 bool DataManager::getMusicOn()
 {
     return _dataMap[kMusicFlag].asBool();
+}
+
+bool DataManager::getShowFid()
+{
+    return _dataMap[kShowFidFlag].asBool();
 }
 
 bool DataManager::getEffectOn()
@@ -57,6 +66,7 @@ void DataManager::initData()
 {
     _dataMap[kMusicFlag] = Value(true);
     _dataMap[kEffectFlag] = Value(true);
+    _dataMap[kShowFidFlag] = Value(false);
 }
 
 void DataManager::saveData()

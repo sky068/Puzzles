@@ -40,7 +40,6 @@ public:
 
     void onExit();
     
-    CC_SYNTHESIZE(bool, _showFid, IsShowFid);
 private:
     std::string formateTimeString(long long t);
 private:
@@ -61,7 +60,6 @@ private:
     int _nullCol;
     int _preMove;  //上次空白格移动的标示
     bool _isBeginGame;
-    int _effectKind;
     
     Label *_lableTips;
         

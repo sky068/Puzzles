@@ -18,8 +18,8 @@ using namespace CocosDenshion;
 #define AudioEngine (SimpleAudioEngine::getInstance())
 
 #define kMusic_Bg "sounds/bground.mp3"
+#define kMusic_Bg2 "sounds/farmville.mp3"
 #define kEffect_Touch "sounds/touch.mp3"
-#define kEffect_Touch2 "sounds/touch2.mp3"
 #define kEffect_Success "sounds/success.mp3"
 #define kEffect_Btn "sounds/click.mp3"
 

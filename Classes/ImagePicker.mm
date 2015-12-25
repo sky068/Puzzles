@@ -210,7 +210,6 @@ extern "C"
         Director::getInstance()->getScheduler()->performFunctionInCocosThread([=,strPath]()mutable{
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("ImagePickerEvent",&strPath);
         });
-
     }
 }
 

@@ -15,7 +15,7 @@ USING_NS_CC;
 
 #define kMusicFlag "musicOn"
 #define kEffectFlag "effectOn"
-
+#define kShowFidFlag "isShowFid"
 
 class DataManager
 {
@@ -27,7 +27,9 @@ public:
     void readData();
     bool getMusicOn();
     bool getEffectOn();
+    bool getShowFid();
     void setMusicOn(bool flag);
+    void setShowFid(bool flag);
     
 private:
     void initData();

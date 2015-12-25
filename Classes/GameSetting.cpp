@@ -61,12 +61,16 @@ bool GameSetting::init()
                                                   });
     _btnMusic->setPosition(Vec2(csize.width/2-30,csize.height/2+10));
     
-    _btnHelp = MenuItemFont::create("显示提示", [=](Ref*p)
+    std::string showFid = "显示提示";
+    if (DataManager::getInstance()->getShowFid())
+    {
+        showFid = "关闭提示";
+    }
+    _btnHelp = MenuItemFont::create(showFid, [=](Ref*p)
                                                    {
-                                                       bool isShow = _gameLayer->getIsShowFid();
+                                                       bool isShow = DataManager::getInstance()->getShowFid();
                                                        isShow = !isShow;
-                                                       _gameLayer->setIsShowFid(isShow);
-                                                       _gameLayer->setShowFid(isShow);
+                                                       DataManager::getInstance()->setShowFid(isShow);
                                                        if (isShow)
                                                        {
                                                            _btnHelp->setString("关闭提示");
@@ -75,6 +79,8 @@ bool GameSetting::init()
                                                        {
                                                            _btnHelp->setString("显示提示");
                                                        }
+                                                       
+                                                       _gameLayer->setShowFid(isShow);
                                                        
                                                    });
     _btnHelp->setPosition(Vec2(csize.width/2+30,csize.height/2+10));

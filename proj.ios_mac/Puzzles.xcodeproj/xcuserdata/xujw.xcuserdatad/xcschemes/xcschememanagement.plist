@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Puzzles-mobile copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Puzzles-mobile.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>5087E73D17EB910900C73F5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA3B51ED1C2D1E9900625323</key>
 		<dict>
 			<key>primary</key>
 			<true/>

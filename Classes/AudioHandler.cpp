@@ -15,6 +15,7 @@ void AudioHandler::playBgMusic(const std::string &file)
     {
         return;
     }
+    AudioEngine->setBackgroundMusicVolume(0.3f);
     AudioEngine->playBackgroundMusic(file.c_str(),true);
 }
 
